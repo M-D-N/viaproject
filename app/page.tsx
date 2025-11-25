@@ -1,8 +1,9 @@
-// import Image from "next/image";
+import Image from "next/image";
 
 import { Homeabout } from "./components/ui/Homeabout";
 import { Homehero } from "./components/ui/Homehero";
 import { Hometop } from "./components/ui/Hometop";
+import { Form } from "./components/ui/Homeform";
 
 export default function Home() {
   return (
@@ -46,6 +47,23 @@ export default function Home() {
               ]
             }
           ]}
+        />
+      </div>
+      <Image className="line" src="/line.svg" alt="Line" priority fill />
+
+      <div className="container">
+        <Form
+          title = "Biz bilan bog‘laning"
+          subtitle = "Savolingiz bormi? Biz sizga tez orada javob beramiz"
+          name = "Ism"
+          nameinput = "Brian Clark"
+          phone = "Telfon raqami"
+          phoneinput = "(90) 456 - 7890"
+          comment = "Xabar matni"
+          commentinput = "Xabaringizni shu yerga yozing..."
+          btn = "Xabarni yuborish"
+          leftimg = "/formleft.png"
+          rightimg = "/formright.png"
         />
       </div>
     </main>

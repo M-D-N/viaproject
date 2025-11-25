@@ -29,3 +29,6 @@ body {
   margin: 0 auto;
   padding: 20px;
 }
+.line{
+  position: inherit !important;
+}
