@@ -1,0 +1,48 @@
+.hometop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 55px;
+    margin-bottom: 55px;
+    gap: 10px;
+}
+.hometopLeft{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    h2{
+        font-size: 48px;
+        line-height: 64px;
+        font-weight: 800;
+    }
+}
+.hometopRight{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 30px;
+    p{
+        font-size: 24px;
+        line-height: 32px;
+        color: #6D6D6D;
+    }
+    button{
+        padding: 15px 10px;
+        width: max-content;
+        background: #199800;
+        font-size: 14px;
+        line-height: 16px;
+        color: #FFFFFF;
+        font-weight: 600;
+        border-radius: 5px;
+    }
+
+}
+.green{
+    color: #199800 !important;
+}

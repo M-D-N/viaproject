@@ -1,0 +1,30 @@
+.header{
+    width: 100%;
+    nav{
+        padding: 20px 30px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        border: 1px solid #F6F6F6;
+        box-shadow: 4px 8px 16px rgba(48, 48, 48, 0.05), inset 4px 8px 16px rgba(48, 48, 48, 0.05);
+        border-radius: 8px;
+        color: #000;
+        ul{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+    }
+}
+.headerContact{
+    padding: 10px 15px;
+    border: 1px solid #199800;
+    border-radius: 8px;
+}
+
+
+

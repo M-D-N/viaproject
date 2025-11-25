@@ -1,0 +1,68 @@
+.homehero{
+    width: 100%;
+    :global(.splide__arrow){
+        top: inherit;
+        bottom: 40px;
+    }
+    :global(.splide__arrow--prev){
+        right: 10%;
+        left: inherit;
+    }
+    :global(.splide__arrow--next){
+        right: 7%;
+    }
+}
+.homeheroslide{
+    position: relative;
+    width: 100%;
+    height: 650px;
+}
+.homeheroContent{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10;
+    padding: 15px 15px 20px 15px;
+    background: rgba(0, 0, 0, 0.205);
+    box-shadow: 4px 8px 24px rgba(48, 48, 48, 0.25), inset 4px 8px 20px rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    color: #fff;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 15px;
+}
+.homeheroContentImage{
+    position: relative;
+    width: 275px;
+    height: 175px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.homeheroContentInner{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    gap: 10px;
+    span{
+        font-size: 16px;
+        line-height: 18px;
+    }
+    h2{
+        font-size: 32px;
+        line-height: 40px;
+    }
+    p{
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+
+
+
