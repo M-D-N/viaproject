@@ -1,5 +1,6 @@
 // import Image from "next/image";
 
+import { Homeabout } from "./components/ui/Homeabout";
 import { Homehero } from "./components/ui/Homehero";
 import { Hometop } from "./components/ui/Hometop";
 
@@ -19,6 +20,34 @@ export default function Home() {
         {img: "/2.png", title: "Sifat va dizayn uyg'unligi", description: "Bizning mebellarimiz nafaqat chiroyli, balki uzoq muddat xizmat qiladi.", btn: "Mahsulotlarni ko'rish"},
         {img: "/3.png", title: "Maxsus takliflar va chegirmalar", description: "VIA bilan xarid qilish endi yanada foydaliroq va arzonroq.", btn: "Chegirmalarni ko'rish"}
       ]}/>
+
+      <div className="container">
+        <Homeabout 
+          title = "Bizning kompaniyamiz haqida"
+          description = "Zamonaviy, klassik va minimalist mebellar — barchasi bir joyda. Har bir buyum – sifatli material va o‘ziga xos dizayn. Qulay narx, tez yetkazib berish va individual yondashuv kafolatlangan"
+          contents = {[
+            {
+              img: "/about1.png",
+              items: [
+                {number: 15, numTitle: "Yillik tajriba", numDesc: "Bozorni chuqur tushunamiz, har bir mijozga to‘g‘ri yondashamiz." }
+              ]
+            },
+            {
+              img: "/about2.png",
+              items: [
+                {number: 1000, numTitle: "Yillik tajriba", numDesc: "Bozorni chuqur tushunamiz, har bir mijozga to‘g‘ri yondashamiz." },
+                {number: 60, numTitle: "Turli assortiment", numDesc: "Zamonaviy, klassik va minimalist uslubdagi keng tanlov." }
+              ]
+            },
+            {
+              img: "/about3.png",
+              items: [
+                {number: 100, numTitle: "Sifatli natija", numDesc: "Har bir mebel ishonchli materiallardan va puxta ishlab chiqiladi" }
+              ]
+            }
+          ]}
+        />
+      </div>
     </main>
   );
 }
