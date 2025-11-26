@@ -4,6 +4,7 @@ import { Homeabout } from "./components/ui/Homeabout";
 import { Homehero } from "./components/ui/Homehero";
 import { Hometop } from "./components/ui/Hometop";
 import { Form } from "./components/ui/Homeform";
+import { Products } from "./components/ui/Homeproducts";
 
 export default function Home() {
   return (
@@ -52,6 +53,23 @@ export default function Home() {
       
       <Image className="line" src="/line.svg" alt="Line" priority fill />
 
+      <div className="container">
+        <Products 
+          title = "Mahsulotlar"
+          categoryitem = {[
+            {name: "Yotoqxona"},
+            {name: "Oshxona"},
+            {name: "Bolalar xonasi"},
+            {name: "Mehmonxona"},
+            {name: "Yumshoq mebel"}
+          ]}
+          productitem = {[
+            {img: '/test.png', name: 'Oshxona garniturlari', prise: 200},
+            {img: '/test.png', name: 'Modern stol stul', prise: 250},
+            {img: '/test.png', name: 'Zamonaviy ovqatlanish stoli', prise: 350},
+          ]}
+        />
+      </div>
 
       <Form
         title = "Biz bilan bog‘laning"
