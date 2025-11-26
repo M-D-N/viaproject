@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import StyleSheet from './Homeform.module.scss';
-
 interface FormProps {
     title: string;
     subtitle: string;
@@ -14,8 +13,8 @@ interface FormProps {
     leftimg: string;
     rightimg: string;
 }
-
 export function Form ({title, subtitle, name, nameinput, phone, phoneinput, comment, commentinput, btn, leftimg, rightimg}: FormProps){
+    const words = title.split(' ');
     return(
         <div className={StyleSheet.formcontent}>
             <div className={StyleSheet.formcontentleft}>
@@ -27,7 +26,19 @@ export function Form ({title, subtitle, name, nameinput, phone, phoneinput, comm
                     style={{ objectFit: "cover" }} 
                 />
                 <div className={StyleSheet.formcontentleftcontent}>
-                    <h3>{title}</h3>
+                    <h3>
+                        {
+                            words.map((word, index) => (
+                                <span key={index}>
+                                    {
+                                        index === words.length-1 ? (
+                                            <span style={{ color:"#24BF00"}}> {word} </span>
+                                        ) : ( <span>{word}</span> )
+                                    }
+                                </span> 
+                            ))
+                        }
+                    </h3>
                     <p>{subtitle}</p>
                 </div>
             </div>

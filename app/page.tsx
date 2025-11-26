@@ -49,23 +49,23 @@ export default function Home() {
           ]}
         />
       </div>
+      
       <Image className="line" src="/line.svg" alt="Line" priority fill />
 
-      <div className="container">
-        <Form
-          title = "Biz bilan bog‘laning"
-          subtitle = "Savolingiz bormi? Biz sizga tez orada javob beramiz"
-          name = "Ism"
-          nameinput = "Brian Clark"
-          phone = "Telfon raqami"
-          phoneinput = "(90) 456 - 7890"
-          comment = "Xabar matni"
-          commentinput = "Xabaringizni shu yerga yozing..."
-          btn = "Xabarni yuborish"
-          leftimg = "/formleft.png"
-          rightimg = "/formright.png"
-        />
-      </div>
+
+      <Form
+        title = "Biz bilan bog‘laning"
+        subtitle = "Savolingiz bormi? Biz sizga tez orada javob beramiz"
+        name = "Ism"
+        nameinput = "Brian Clark"
+        phone = "Telfon raqami"
+        phoneinput = "(90) 456 - 7890"
+        comment = "Xabar matni"
+        commentinput = "Xabaringizni shu yerga yozing..."
+        btn = "Xabarni yuborish"
+        leftimg = "/formleft.png"
+        rightimg = "/formright.png"
+      />
     </main>
   );
 }
