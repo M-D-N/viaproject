@@ -30,19 +30,24 @@ export function Products ({productitem, categoryitem, title} : ProductsProps) {
             <div className={StyleSheet.homeproductsbottom}>
                 {
                     productitem.map((item, index) => (
-                        <div key={index}>
+                        <div key={index} className={StyleSheet.homeproductsbottomitem}>
                             <div className={StyleSheet.homeproductsbottomimg}>
                                 <Image
                                     src={item.img}
                                     alt={item.img}
-                                    priority
                                     fill
                                     style={{objectFit: 'cover'}} 
                                 />
                             </div>
                             <div className={StyleSheet.homeproductsbottominfo}>
                                 <div className={StyleSheet.homeproductsbottominfoleft}>
-                                    <span>{item.name}</span>
+                                    <span>
+                                        {
+                                            item.name.length > 20 
+                                            ? item.name.slice(0, 20) + "…" 
+                                            : item.name
+                                        }
+                                    </span>
                                     <span>${item.prise} USD</span>
                                 </div>
                                 <button>&#8594;</button>

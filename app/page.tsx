@@ -64,9 +64,12 @@ export default function Home() {
             {name: "Yumshoq mebel"}
           ]}
           productitem = {[
-            {img: '/test.png', name: 'Oshxona garniturlari', prise: 200},
-            {img: '/test.png', name: 'Modern stol stul', prise: 250},
-            {img: '/test.png', name: 'Zamonaviy ovqatlanish stoli', prise: 350},
+            {img: '/1.png', name: 'Oshxona garniturlari', prise: 200},
+            {img: '/2.png', name: 'Modern stol stul', prise: 250},
+            {img: '/3.png', name: 'Zamonaviy ovqatlanish stoli', prise: 350},
+            {img: '/3.png', name: 'Zamonaviy ovqatlanish stoli', prise: 350},
+            {img: '/2.png', name: 'Modern stol stul', prise: 250},
+            {img: '/1.png', name: 'Oshxona garniturlari', prise: 200},
           ]}
         />
       </div>
