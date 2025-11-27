@@ -34,13 +34,14 @@
         outline: none;
         cursor: pointer;
         background-color: #F6F6F6;
+        transition: all 300ms;
     }
 }
 .homeproductsbottom{
     padding-top: 55px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: start;
     gap: 20px;
     flex-wrap: wrap;
@@ -91,4 +92,8 @@
             font-weight: 800;
         }
     }
+}
+.activeCat {
+  background-color: #24BF00 !important;
+  color: #fff !important;
 }

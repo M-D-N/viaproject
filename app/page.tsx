@@ -54,22 +54,52 @@ export default function Home() {
       <Image className="line" src="/line.svg" alt="Line" priority fill />
 
       <div className="container">
-        <Products 
-          title = "Mahsulotlar"
-          categoryitem = {[
-            {name: "Yotoqxona"},
-            {name: "Oshxona"},
-            {name: "Bolalar xonasi"},
-            {name: "Mehmonxona"},
-            {name: "Yumshoq mebel"}
+        <Products
+          title="Mahsulotlar"
+          categoryitem={[
+            { name: "Yotoqxona" },
+            { name: "Oshxona" },
+            { name: "Bolalar xonasi" },
+            { name: "Mehmonxona" },
+            { name: "Yumshoq mebel" },
           ]}
-          productitem = {[
-            {img: '/1.png', name: 'Oshxona garniturlari', prise: 200},
-            {img: '/2.png', name: 'Modern stol stul', prise: 250},
-            {img: '/3.png', name: 'Zamonaviy ovqatlanish stoli', prise: 350},
-            {img: '/3.png', name: 'Zamonaviy ovqatlanish stoli', prise: 350},
-            {img: '/2.png', name: 'Modern stol stul', prise: 250},
-            {img: '/1.png', name: 'Oshxona garniturlari', prise: 200},
+          productitem={[
+            {
+              img: "/1.png",
+              name: "Oshxona garniturlari",
+              prise: 200,
+              category: "Oshxona",
+            },
+            {
+              img: "/2.png",
+              name: "Modern stol stul",
+              prise: 250,
+              category: "Mehmonxona",
+            },
+            {
+              img: "/3.png",
+              name: "Zamonaviy ovqatlanish stoli",
+              prise: 350,
+              category: "Oshxona",
+            },
+            {
+              img: "/3.png",
+              name: "Zamonaviy ovqatlanish stoli",
+              prise: 350,
+              category: "Yotoqxona",
+            },
+            {
+              img: "/2.png",
+              name: "Modern stol stul",
+              prise: 250,
+              category: "Yumshoq mebel",
+            },
+            {
+              img: "/1.png",
+              name: "Oshxona garniturlari",
+              prise: 200,
+              category: "Bolalar xonasi",
+            },
           ]}
         />
       </div>
