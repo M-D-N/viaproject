@@ -17,8 +17,6 @@ const client = new QueryClient({
 
     
 export function ReactQueryProvider({ children }: Props) {
-     
-
   return (
     <QueryClientProvider client={client}>
       {children}

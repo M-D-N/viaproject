@@ -4,30 +4,73 @@ if (!API_URL) {
   throw new Error("NEXT_PUBLIC_API_URL is not defined");
 }
 
-type StrapiImage = {
-  data: {
-    logo: {
-      url: string;
-      alternativeText: string | null;
-    };
-  } | null;
-};
+export interface StrapiImage {
+  id: number;
+  name: string;
+  url: string;
+}
 
-export interface HomepageAttributes {
-  logo: StrapiImage;
+export interface ContactInfo {
+  id: number;
   phone: string;
   address: string;
   email: string;
+}
+
+export interface WorkItem {
+  id: number;
   work_days: string;
-  work_time: string;
+  work_time_from: string;
+  work_time_to: string;
+}
+
+export interface TopContents {
+  id: number;
+  toptitle: string;
+  topdescription: string;
+}
+
+export interface SlideItem {
+  id: number;
+  slidetitle: string;
+  slidedescription: string;
+}
+
+export interface AboutContent {
+  id: number;
+  abouttitle: string;
+  aboutdescription: string;
+}
+
+export interface FormContent {
+  id: number;
+  formtitle: string;
+  formdesc: string;
+}
+
+export interface HomepageAttributes {
+  id: number;
+  documentId: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  footerdescription: string;
+
+  logo: StrapiImage;
+  contact_info: ContactInfo;
+  works: WorkItem[];
+
+  topcontents: TopContents;
+  slides: SlideItem[];
+  aboutcontent: AboutContent;
+  formcontent: FormContent;
 }
 
 interface StrapiSingleTypeResponse<T> {
-  data: {
-    id: number;
-    attributes: T;
-  };
+  data: T;
+  meta: Record<string, unknown>;
 }
+
 
 // Общий fetcher
 async function strapiFetch<T>(path: string): Promise<T> {
@@ -53,5 +96,5 @@ export async function getHomepage(): Promise<HomepageAttributes> {
   const json = await strapiFetch<StrapiSingleTypeResponse<HomepageAttributes>>(
     "/homepage?populate=*"
   );
-  return json.data.attributes;
+  return json.data;
 }

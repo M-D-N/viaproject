@@ -4,7 +4,9 @@ import Link from "next/link";
 import styles from "./Header.module.scss";
 import Image from "next/image";
 import { buildAbsoluteUrl } from "@/lib/utils";
+import { getHomepage } from "@/lib/strapiClient";
 
+const homepage = await getHomepage();
 
 interface NavItem {
     title: string;
@@ -12,7 +14,6 @@ interface NavItem {
 }
 interface HeaderProps{
     items: NavItem[];
-
 }
 export function Header ({ items }: HeaderProps) {
     const { data, isLoading, isError } = useHomepageQuery();
@@ -54,25 +55,17 @@ export function Header ({ items }: HeaderProps) {
         </header>
     }
 
-    const { phone, logo } = data!;
-
-    const logoUrl = logo.data?.logo.url
-    
     return (
         <header className={styles.header}>
             <nav>
-                {logoUrl ? (
-                    <div style={{ position: "relative", width: 50, height: 50 }}>
-                        <Image
-                        src={buildAbsoluteUrl(logoUrl)}
-                        alt={logo.data?.attributes?.alternativeText || "Logo"}
+                <div style={{ position: "relative", width: 50, height: 50 }}>
+                    <Image
+                        src={buildAbsoluteUrl(homepage.logo.url) || "/logo.svg"}
+                        alt={homepage.logo.name || "Logo"}
                         fill
                         style={{ objectFit: "contain" }}
-                        />
-                    </div>
-                ) : (
-                    <Image src="/logo.svg" alt="Logo" width={50} height={50} />
-                )}
+                    />
+                </div>
 
                 <ul>
                     {items.map((item, index) => (
@@ -82,8 +75,8 @@ export function Header ({ items }: HeaderProps) {
                     ))}
                 </ul>
 
-                <a className={styles.headerContact} href={`tel:${phone}`}>
-                    {phone}
+                <a className={styles.headerContact} href={`tel:${homepage.contact_info.phone}`}>
+                    {homepage.contact_info.phone}
                 </a>
             </nav>
         </header>
