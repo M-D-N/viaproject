@@ -1,3 +1,28 @@
+import { HttpLink } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+
+const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL || "http://localhost:1337";
+
+// Create HTTP link to your Strapi GraphQL endpoint
+const httpLink = new HttpLink({
+  uri: `${STRAPI_BASE_URL}/graphql`,
+});
+
+// Create Apollo Client instance
+export const apolloClient = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+  // Optional: Add error handling
+  defaultOptions: {
+    watchQuery: {
+      errorPolicy: "ignore",
+    },
+    query: {
+      errorPolicy: "all",
+    },
+  },
+});
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 if (!API_URL) {

@@ -56,16 +56,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 {title: "+998 XX XXX XX XX", link: "tel:+1234567890", img: "/phone.svg"},
                 {title: "example@gmail.com", link: "mailto:mail@mail.ru", img: "/mail.svg"},
               ]}
-              itemsishvaqti = {[
-                {days: "Dushanba - Juma", hourfrom: "9:00 dan", hourto: "19:00 gacha"},
-                {days: "Shanba", hourfrom: "9:00 dan", hourto: "19:00 gacha"},
-                {days: "Yakshanba", hourfrom: "9:00 dan", hourto: "19:00 gacha"},
-              ]}
               itemssocial = {[
                 {platform: "Facebook", link: "https://facebook.com", icon: "/facebook.svg"},
                 {platform: "Twitter", link: "https://twitter.com", icon: "/twitter.svg"},
                 {platform: "Instagram", link: "https://instagram.com", icon: "/instagram.svg"},
                 {platform: "YouTube", link: "https://youtube.com", icon: "/youtube.svg"},
+              ]}
+              itemsishvaqti = {[
+                {days: "Dushanba - Juma", hourfrom: "9:00 dan", hourto: "19:00 gacha"},
+                {days: "Shanba", hourfrom: "9:00 dan", hourto: "19:00 gacha"},
+                {days: "Yakshanba", hourfrom: "9:00 dan", hourto: "19:00 gacha"},
               ]}
               description="Har bir mahsulotimiz — nafis dizayn, ishonchli material va puxta ishlovning ifodasi. Uy, ofis yoki jamoat joylari uchun mo‘ljallangan mebellarimiz hayotingizga iliqlik va qulaylik baxsh etadi."
               copyright = "© 2025 VIA All rights reserved. | Privacy Policy | Terms of Service"

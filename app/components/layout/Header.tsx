@@ -37,6 +37,7 @@ export function Header ({ items }: HeaderProps) {
             </header>
         )
     }
+    
     if(isError || !data){
         <header className={styles.header}>
             <nav>

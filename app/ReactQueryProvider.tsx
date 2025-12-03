@@ -1,6 +1,8 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ApolloProvider } from "@apollo/client/react";
+import { apolloClient } from "@/lib/strapiClient";
 import { ReactNode } from "react";
 
 interface Props {
@@ -19,7 +21,9 @@ const client = new QueryClient({
 export function ReactQueryProvider({ children }: Props) {
   return (
     <QueryClientProvider client={client}>
-      {children}
+        <ApolloProvider client={apolloClient}>  
+          {children}
+        </ApolloProvider>
     </QueryClientProvider>
   );
 }
