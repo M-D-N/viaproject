@@ -1,12 +1,11 @@
-"use client";
+'use client'
+
 import { useHomepageQuery } from "@/hooks/useHomepageQuery";
 import Link from "next/link";
 import styles from "./Header.module.scss";
 import Image from "next/image";
 import { buildAbsoluteUrl } from "@/lib/utils";
-import { getHomepage } from "@/lib/strapiClient";
 
-const homepage = await getHomepage();
 
 interface NavItem {
     title: string;
@@ -15,10 +14,12 @@ interface NavItem {
 interface HeaderProps{
     items: NavItem[];
 }
-export function Header ({ items }: HeaderProps) {
-    const { data, isLoading, isError } = useHomepageQuery();
 
-    if(isLoading){
+export function Header ({ items }: HeaderProps) {
+    
+    const { data, loading, error } = useHomepageQuery();
+
+    if(loading){
         return(
             <header className={styles.header}>
                 <nav>
@@ -38,7 +39,7 @@ export function Header ({ items }: HeaderProps) {
         )
     }
     
-    if(isError || !data){
+    if(error || !data){
         <header className={styles.header}>
             <nav>
                 <Image src="/logo.svg" alt="Logo" width={50} height={50} />
@@ -61,8 +62,8 @@ export function Header ({ items }: HeaderProps) {
             <nav>
                 <div style={{ position: "relative", width: 50, height: 50 }}>
                     <Image
-                        src={buildAbsoluteUrl(homepage.logo.url) || "/logo.svg"}
-                        alt={homepage.logo.name || "Logo"}
+                        src={buildAbsoluteUrl(data?.homepage.logo.url || "/logo.svg") }
+                        alt={data?.homepage.logo.name || "Logo"}
                         fill
                         style={{ objectFit: "contain" }}
                     />
@@ -76,9 +77,8 @@ export function Header ({ items }: HeaderProps) {
                     ))}
                 </ul>
 
-                <a className={styles.headerContact} href={`tel:${homepage.contact_info.phone}`}>
-                    {homepage.contact_info.phone}
-                </a>
+                <a className={styles.headerContact} href={`tel:${data?.homepage.contact_info.contactcontent[0].text}`}>
+                    {data?.homepage.contact_info.contactcontent[1].text}</a>
             </nav>
         </header>
     )

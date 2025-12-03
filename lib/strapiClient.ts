@@ -5,7 +5,7 @@ const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL || "http://localhost
 
 // Create HTTP link to your Strapi GraphQL endpoint
 const httpLink = new HttpLink({
-  uri: `${STRAPI_BASE_URL}/graphql`,
+  uri: `${STRAPI_BASE_URL}`,
 });
 
 // Create Apollo Client instance

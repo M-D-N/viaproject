@@ -9,13 +9,13 @@ interface Props {
   children: ReactNode;
 }
 const client = new QueryClient({
-        defaultOptions: {
-          queries: {
-            retry: 1,
-            refetchOnWindowFocus: false,
-          },
-        },
-    })
+    defaultOptions: {
+      queries: {
+        retry: 1,
+        refetchOnWindowFocus: false,
+      },
+    },
+})
 
     
 export function ReactQueryProvider({ children }: Props) {

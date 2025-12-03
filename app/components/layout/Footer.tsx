@@ -4,9 +4,7 @@ import styles from './Footer.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import { buildAbsoluteUrl } from "@/lib/utils";
-import { getHomepage } from "@/lib/strapiClient";
 
-const homepage = await getHomepage();
 
 interface Sahifalar{
     title: string;
@@ -36,9 +34,12 @@ interface FooterProps{
     copyright: string;
 }
 export function Footer({itemssahifa, itemssocial, itemsaloqa, description, copyright}: FooterProps){
-    const { data, isLoading, isError } = useHomepageQuery();
+    const { data, loading, error } = useHomepageQuery();
 
-    if(isLoading){
+    const contactInfo = data?.homepage.contact_info.contactcontent;
+    const worksInfo = data?.homepage.works;
+
+    if(loading){
         return(
             <footer className={styles.footer}>
                 <div className={styles.footerContainer}>
@@ -88,7 +89,7 @@ export function Footer({itemssahifa, itemssocial, itemsaloqa, description, copyr
             </footer>
         )
     }
-    if(isError || !data){
+    if(error || !data){
         return(
             <footer className={styles.footer}>
                 <div className={styles.footerContainer}>
@@ -138,16 +139,13 @@ export function Footer({itemssahifa, itemssocial, itemsaloqa, description, copyr
             </footer>
         )
     }
-
-    // const contactInfo = homepage.contact_info.contactcontent;
-    const worksInfo = homepage.works;
 
     return(
         <footer className={styles.footer}>
             <div className={styles.footerContainer}>
                 <div className={styles.footerLeft}>
-                    <Image src={buildAbsoluteUrl(homepage.logo.url)} alt="Logo" width={50} height={50} />
-                    <p>{homepage.footerdescription}</p>
+                    <Image src={buildAbsoluteUrl(data?.homepage.logo.url)} alt="Logo" width={50} height={50} />
+                    <p>{data?.homepage.footerdescription}</p>
                 </div>
                 <div className={styles.footerRight}>
                     <div className={styles.footerRightItems}>
@@ -166,10 +164,10 @@ export function Footer({itemssahifa, itemssocial, itemsaloqa, description, copyr
                         <h3>Aloqa uchun</h3>
                         <ul>
                             {
-                                itemsaloqa.map((item, index) => (
+                                contactInfo?.map((item, index) => (
                                     <li key={index}>
-                                        <Image src={item.img} alt={item.title} width={20} height={20} />
-                                        <Link href={item.link}>{item.title}</Link>
+                                        <Image src={buildAbsoluteUrl(item.iconimg.url)} alt={item.text} width={20} height={20} />
+                                        <Link href={item.text}>{item.text}</Link>
                                     </li>
                                 ))
                             }
@@ -179,7 +177,7 @@ export function Footer({itemssahifa, itemssocial, itemsaloqa, description, copyr
                         <h3>Ish vaqti</h3>
                         <ul>
                             {
-                                worksInfo.map((item, index) => (
+                                worksInfo?.map((item, index) => (
                                     <li key={index}>
                                         <span>{item.work_days}</span>
                                         <span>
