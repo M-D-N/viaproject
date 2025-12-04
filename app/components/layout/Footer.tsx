@@ -33,7 +33,7 @@ interface FooterProps{
     description: string;
     copyright: string;
 }
-export function Footer({itemssahifa, itemssocial, itemsaloqa, description, copyright}: FooterProps){
+export function Footer({itemssahifa, itemssocial, description, copyright}: FooterProps){
     const { data, loading, error } = useHomepageQuery();
 
     const contactInfo = data?.homepage.contact_info.contactcontent;

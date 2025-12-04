@@ -1,7 +1,7 @@
 "use client";
 
 import { useHomepageQuery } from "@/hooks/useHomepageQuery";
-import { buildAbsoluteUrl } from "@/lib/utils";
+// import { buildAbsoluteUrl } from "@/lib/utils";
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import StyleSheet from "./Homeproducts.module.scss";
@@ -25,8 +25,8 @@ interface ProductsProps {
 
 export function Products({ productitem, categoryitem, title }: ProductsProps) {
   const { data, loading, error } = useHomepageQuery();
-  const productContent = data?.products;
-  const productFillter = productContent?.fillters.Filltername;
+  // const productContent = data?.products;
+  // const productFillter = productContent?.fillters.Filltername;
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
   const filteredProducts = useMemo(() => {

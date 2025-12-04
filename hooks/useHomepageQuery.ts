@@ -3,9 +3,9 @@
 // import { useQuery } from "@tanstack/react-query";
 import { useQuery } from "@apollo/client/react";
 
-import { getHomepage, HomepageAttributes } from "@/lib/strapiClient";
+// import { getHomepage, HomepageAttributes } from "@/lib/strapiClient";
 import { HOME_PAGE_QUERY } from "@/lib/graphql/queries/homePage";
-import { error } from "console";
+// import { error } from "console";
 import { IHomePage } from "@/types/homePage";
 
 // export function useHomepageQuery() {
