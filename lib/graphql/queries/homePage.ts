@@ -17,7 +17,7 @@ export const HOME_PAGE_QUERY = gql`
             aboutstattitle
           }
         }
-        aboutdescription 
+        aboutdescription
       }
       contact_info {
         contactcontent {
@@ -55,6 +55,18 @@ export const HOME_PAGE_QUERY = gql`
         work_days
         work_time_from
         work_time_to
+      }
+    }
+    products {
+      Img {
+        name
+        url
+        alternativeText
+      }
+      Name
+      Prise
+      fillters {
+        Filltername
       }
     }
   }

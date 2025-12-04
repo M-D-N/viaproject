@@ -157,6 +157,7 @@ export function Homeabout({contents, title, description}: TopItem){
                             <div className={StyleSheet.homeaboutitemlistimg}>
                                 <Image
                                     src={buildAbsoluteUrl(content.aboutimg.url)}
+                                    unoptimized
                                     alt="Slide1"
                                     priority
                                     fill

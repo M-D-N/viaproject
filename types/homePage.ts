@@ -1,6 +1,7 @@
 
 export interface IHomePage {
     homepage: Homepage;
+    products: Product;
 }
 
 export interface Homepage {
@@ -15,9 +16,9 @@ export interface Homepage {
 }
 
 export interface Aboutcontent {
-    abouttitle: string;
+    abouttitle:       string;
+    aboutmedia:       Aboutmedia[];
     aboutdescription: string;
-    aboutmedia: Aboutmedia[];
 }
 
 export interface Aboutmedia {
@@ -58,7 +59,7 @@ export interface Formcontent {
 export interface Logo {
     url:             string;
     name:            string;
-    alternativeText: null;
+    alternativeText: null | string;
 }
 
 export interface Slide {
@@ -79,4 +80,15 @@ export interface Work {
     work_days:      string;
     work_time_from: string;
     work_time_to:   string;
+}
+
+export interface Product {
+    Img:      Logo;
+    Name:     string;
+    Prise:    number;
+    fillters: Fillter;
+}
+
+export interface Fillter {
+    Filltername: string;
 }
