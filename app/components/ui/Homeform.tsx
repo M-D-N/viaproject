@@ -1,3 +1,5 @@
+import { useHomepageQuery } from "@/hooks/useHomepageQuery";
+// import { buildAbsoluteUrl } from "@/lib/utils";
 import Image from 'next/image';
 import StyleSheet from './Homeform.module.scss';
 interface FormProps {
@@ -14,7 +16,121 @@ interface FormProps {
     rightimg: string;
 }
 export function Form ({title, subtitle, name, nameinput, phone, phoneinput, comment, commentinput, btn, leftimg, rightimg}: FormProps){
+    const { data, loading, error } = useHomepageQuery();
+    const homeForm = data?.homepage.formcontent;
+    const homeFormTitle = homeForm?.formtitle; 
+    const homeFormWords = homeFormTitle?.split(' ');
     const words = title.split(' ');
+    if(loading){
+        return(
+            <div className={StyleSheet.formcontent}>
+                <div className={StyleSheet.formcontentleft}>
+                    <Image
+                        src={leftimg}
+                        alt="Slide1"
+                        priority
+                        fill
+                        style={{ objectFit: "cover" }} 
+                    />
+                    <div className={StyleSheet.formcontentleftcontent}>
+                        <h3>
+                            {
+                                words.map((word, index) => (
+                                    <span key={index}>
+                                        {
+                                            index === words.length-1 ? (
+                                                <span style={{ color:"#24BF00"}}> {word} </span>
+                                            ) : ( <span>{word}</span> )
+                                        }
+                                    </span> 
+                                ))
+                            }
+                        </h3>
+                        <p>{subtitle}</p>
+                    </div>
+                </div>
+                <div className={StyleSheet.formcontentright}>
+                    <Image
+                        src={rightimg}
+                        alt="Slide1"
+                        priority
+                        fill
+                        style={{ objectFit: "cover" }} 
+                    />
+                    <form action="" method="post">
+                        <label htmlFor="">
+                            <span>{name}</span>
+                            <input type="text" placeholder={nameinput} />
+                        </label>
+                        <label htmlFor="">
+                            <span>{phone}</span>
+                            <input type="phone" placeholder={phoneinput} />
+                        </label>
+                        <label htmlFor="">
+                            <span>{comment}</span>
+                            <textarea name="comment" id="" placeholder={commentinput}></textarea>
+                        </label>
+                        <button type="submit">{btn}</button>
+                    </form>
+                </div>
+            </div>
+        )
+    }
+    if(error || !data){
+        return(
+            <div className={StyleSheet.formcontent}>
+                <div className={StyleSheet.formcontentleft}>
+                    <Image
+                        src={leftimg}
+                        alt="Slide1"
+                        priority
+                        fill
+                        style={{ objectFit: "cover" }} 
+                    />
+                    <div className={StyleSheet.formcontentleftcontent}>
+                        <h3>
+                            {
+                                words.map((word, index) => (
+                                    <span key={index}>
+                                        {
+                                            index === words.length-1 ? (
+                                                <span style={{ color:"#24BF00"}}> {word} </span>
+                                            ) : ( <span>{word}</span> )
+                                        }
+                                    </span> 
+                                ))
+                            }
+                        </h3>
+                        <p>{subtitle}</p>
+                    </div>
+                </div>
+                <div className={StyleSheet.formcontentright}>
+                    <Image
+                        src={rightimg}
+                        alt="Slide1"
+                        priority
+                        fill
+                        style={{ objectFit: "cover" }} 
+                    />
+                    <form action="" method="post">
+                        <label htmlFor="">
+                            <span>{name}</span>
+                            <input type="text" placeholder={nameinput} />
+                        </label>
+                        <label htmlFor="">
+                            <span>{phone}</span>
+                            <input type="phone" placeholder={phoneinput} />
+                        </label>
+                        <label htmlFor="">
+                            <span>{comment}</span>
+                            <textarea name="comment" id="" placeholder={commentinput}></textarea>
+                        </label>
+                        <button type="submit">{btn}</button>
+                    </form>
+                </div>
+            </div>
+        )
+    }
     return(
         <div className={StyleSheet.formcontent}>
             <div className={StyleSheet.formcontentleft}>
@@ -28,10 +144,10 @@ export function Form ({title, subtitle, name, nameinput, phone, phoneinput, comm
                 <div className={StyleSheet.formcontentleftcontent}>
                     <h3>
                         {
-                            words.map((word, index) => (
+                            homeFormWords?.map((word, index) => (
                                 <span key={index}>
                                     {
-                                        index === words.length-1 ? (
+                                        index === homeFormWords.length-1 ? (
                                             <span style={{ color:"#24BF00"}}> {word} </span>
                                         ) : ( <span>{word}</span> )
                                     }
@@ -39,7 +155,7 @@ export function Form ({title, subtitle, name, nameinput, phone, phoneinput, comm
                             ))
                         }
                     </h3>
-                    <p>{subtitle}</p>
+                    <p>{homeForm?.formdesc}</p>
                 </div>
             </div>
             <div className={StyleSheet.formcontentright}>

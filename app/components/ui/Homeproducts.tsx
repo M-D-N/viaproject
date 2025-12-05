@@ -1,218 +1,147 @@
 "use client";
 
 import { useHomepageQuery } from "@/hooks/useHomepageQuery";
-// import { buildAbsoluteUrl } from "@/lib/utils";
+import { buildAbsoluteUrl } from "@/lib/utils";
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import StyleSheet from "./Homeproducts.module.scss";
 
+
+// То, чем реально будем оперировать внутри компонента
 interface ProductsInfo {
   img: string;
   name: string;
   prise: number;
-  category: string;
-}
-
-interface CategoryInfo {
-  name: string;
+  categories: string[];   // список фильтров из fillters
+  alt: string;
 }
 
 interface ProductsProps {
-  productitem: ProductsInfo[];
-  categoryitem: CategoryInfo[];
   title: string;
 }
 
-export function Products({ productitem, categoryitem, title }: ProductsProps) {
+export function Products({ title }: ProductsProps) {
   const { data, loading, error } = useHomepageQuery();
-  // const productContent = data?.products;
-  // const productFillter = productContent?.fillters.Filltername;
+
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
+  // ---- Приводим продукты из API к удобной структуре ----
+  const products: ProductsInfo[] = useMemo(() => {
+    if (!data?.products) return [];
+
+    return data.products.map((p) => ({
+      img: p.Img.url,                               // "/uploads/1_e396328560.png"
+      name: p.Name,                                 // "Oshxona garniturlari"
+      prise: p.Prise,                               // 200
+      categories: p.fillters?.map(f => f.Filltername) ?? [], // ["Bolalar xonasi", ...]
+      alt: p.Img.alternativeText ?? p.Name,
+    }));
+  }, [data]);
+
+  // ---- Собираем список всех категорий (фильтров) из продуктов ----
+  const categories: string[] = useMemo(() => {
+    const set = new Set<string>();
+
+    data?.products?.forEach((p) => {
+      p.fillters?.forEach((f) => set.add(f.Filltername));
+    });
+
+    return Array.from(set);
+  }, [data]);
+
+  // ---- Фильтрация продуктов по активной категории ----
   const filteredProducts = useMemo(() => {
-    if (activeCategory === "all") return productitem;
-    return productitem.filter(
-      (item) => item.category === activeCategory
+    if (activeCategory === "all") return products;
+    return products.filter((item) =>
+      item.categories.includes(activeCategory)
     );
-  }, [productitem, activeCategory]);
+  }, [products, activeCategory]);
 
-  if(loading){
+  // ---- Состояние загрузки ----
+  if (loading) {
     return (
       <div className={StyleSheet.homeproducts}>
         <div className={StyleSheet.homeproductstop}>
           <h3>{title}</h3>
 
           <div className={StyleSheet.homeproductscat}>
-            {/* Кнопка "Все" */}
             <button
               type="button"
               onClick={() => setActiveCategory("all")}
               className={
-                activeCategory === "all"
-                  ? StyleSheet.activeCat
-                  : ""
+                activeCategory === "all" ? StyleSheet.activeCat : ""
               }
             >
               Barchasi
             </button>
-
-            {/* Кнопки категорий */}
-            {categoryitem.map((el, index) => (
-              <button
-                key={index}
-                type="button"
-                onClick={() => setActiveCategory(el.name)}
-                className={
-                  activeCategory === el.name
-                    ? StyleSheet.activeCat
-                    : ""
-                }
-              >
-                {el.name}
-              </button>
-            ))}
+            yuklanilmoqda...
           </div>
         </div>
 
         <div className={StyleSheet.homeproductsbottom}>
-          {filteredProducts.map((item, index) => (
-            <div
-              key={index}
-              className={StyleSheet.homeproductsbottomitem}
-            >
-              <div className={StyleSheet.homeproductsbottomimg}>
-                <Image
-                  src={item.img}
-                  alt={item.name}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-
-              <div className={StyleSheet.homeproductsbottominfo}>
-                <div
-                  className={StyleSheet.homeproductsbottominfoleft}
-                >
-                  <span>
-                    {item.name.length > 20
-                      ? item.name.slice(0, 20) + "…"
-                      : item.name}
-                  </span>
-                  <span>${item.prise} USD</span>
-                </div>
-                <button>&#8594;</button>
-              </div>
-            </div>
-          ))}
+          yuklanilmoqda...
         </div>
       </div>
     );
   }
-  if(error || !data){
+
+  // ---- Ошибка или нет данных ----
+  if (error || !data) {
     return (
       <div className={StyleSheet.homeproducts}>
         <div className={StyleSheet.homeproductstop}>
           <h3>{title}</h3>
 
           <div className={StyleSheet.homeproductscat}>
-            {/* Кнопка "Все" */}
             <button
               type="button"
               onClick={() => setActiveCategory("all")}
               className={
-                activeCategory === "all"
-                  ? StyleSheet.activeCat
-                  : ""
+                activeCategory === "all" ? StyleSheet.activeCat : ""
               }
             >
               Barchasi
             </button>
-
-            {/* Кнопки категорий */}
-            {categoryitem.map((el, index) => (
-              <button
-                key={index}
-                type="button"
-                onClick={() => setActiveCategory(el.name)}
-                className={
-                  activeCategory === el.name
-                    ? StyleSheet.activeCat
-                    : ""
-                }
-              >
-                {el.name}
-              </button>
-            ))}
+            yuklanilmadi...
           </div>
         </div>
 
         <div className={StyleSheet.homeproductsbottom}>
-          {filteredProducts.map((item, index) => (
-            <div
-              key={index}
-              className={StyleSheet.homeproductsbottomitem}
-            >
-              <div className={StyleSheet.homeproductsbottomimg}>
-                <Image
-                  src={item.img}
-                  alt={item.name}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-
-              <div className={StyleSheet.homeproductsbottominfo}>
-                <div
-                  className={StyleSheet.homeproductsbottominfoleft}
-                >
-                  <span>
-                    {item.name.length > 20
-                      ? item.name.slice(0, 20) + "…"
-                      : item.name}
-                  </span>
-                  <span>${item.prise} USD</span>
-                </div>
-                <button>&#8594;</button>
-              </div>
-            </div>
-          ))}
+          yuklanilmadi...
         </div>
       </div>
     );
   }
 
+  // ---- Основной рендер ----
   return (
     <div className={StyleSheet.homeproducts}>
       <div className={StyleSheet.homeproductstop}>
         <h3>{title}</h3>
 
         <div className={StyleSheet.homeproductscat}>
-          {/* Кнопка "Все" */}
+          {/* "Все" */}
           <button
             type="button"
             onClick={() => setActiveCategory("all")}
             className={
-              activeCategory === "all"
-                ? StyleSheet.activeCat
-                : ""
+              activeCategory === "all" ? StyleSheet.activeCat : ""
             }
           >
             Barchasi
           </button>
 
-          {/* Кнопки категорий */}
-          {categoryitem.map((el, index) => (
+          {/* Кнопки категорий из fillters */}
+          {categories.map((cat) => (
             <button
-              key={index}
+              key={cat}
               type="button"
-              onClick={() => setActiveCategory(el.name)}
+              onClick={() => setActiveCategory(cat)}
               className={
-                activeCategory === el.name
-                  ? StyleSheet.activeCat
-                  : ""
+                activeCategory === cat ? StyleSheet.activeCat : ""
               }
             >
-              {el.name}
+              {cat}
             </button>
           ))}
         </div>
@@ -226,8 +155,9 @@ export function Products({ productitem, categoryitem, title }: ProductsProps) {
           >
             <div className={StyleSheet.homeproductsbottomimg}>
               <Image
-                src={item.img}
-                alt={item.name}
+                src={buildAbsoluteUrl(item.img)}
+                alt={item.alt}
+                unoptimized
                 fill
                 style={{ objectFit: "cover" }}
               />

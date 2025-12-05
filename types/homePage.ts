@@ -1,7 +1,7 @@
 
 export interface IHomePage {
     homepage: Homepage;
-    products: Product;
+    products: Product[];
 }
 
 export interface Homepage {
@@ -86,7 +86,7 @@ export interface Product {
     Img:      Logo;
     Name:     string;
     Prise:    number;
-    fillters: Fillter;
+    fillters: Fillter[];
 }
 
 export interface Fillter {

@@ -1,10 +1,10 @@
 'use client'
 
 import { useHomepageQuery } from "@/hooks/useHomepageQuery";
+import { buildAbsoluteUrl } from "@/lib/utils";
 import Link from "next/link";
 import styles from "./Header.module.scss";
 import Image from "next/image";
-import { buildAbsoluteUrl } from "@/lib/utils";
 
 
 interface NavItem {
@@ -18,6 +18,7 @@ interface HeaderProps{
 export function Header ({ items }: HeaderProps) {
     
     const { data, loading, error } = useHomepageQuery();
+    const headerContent = data?.homepage;
 
     if(loading){
         return(
@@ -62,8 +63,8 @@ export function Header ({ items }: HeaderProps) {
             <nav>
                 <div style={{ position: "relative", width: 50, height: 50 }}>
                     <Image
-                        src={buildAbsoluteUrl(data?.homepage.logo.url || "/logo.svg") }
-                        alt={data?.homepage.logo.name || "Logo"}
+                        src={buildAbsoluteUrl(headerContent?.logo.url || "/logo.svg") }
+                        alt={headerContent?.logo.name || "Logo"}
                         fill
                         style={{ objectFit: "contain" }}
                     />
@@ -77,8 +78,8 @@ export function Header ({ items }: HeaderProps) {
                     ))}
                 </ul>
 
-                <a className={styles.headerContact} href={`tel:${data?.homepage.contact_info.contactcontent[0].text}`}>
-                    {data?.homepage.contact_info.contactcontent[1].text}</a>
+                <a className={styles.headerContact} href={`tel:${headerContent?.contact_info.contactcontent[0].text}`}>
+                    {headerContent?.contact_info.contactcontent[1].text}</a>
             </nav>
         </header>
     )
