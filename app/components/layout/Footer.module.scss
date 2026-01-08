@@ -97,3 +97,35 @@
     align-items: center;
     gap:15px;
 }
+
+@media(max-width: 900px){
+    .footerContainer{
+        flex-direction: column;
+        gap: 50px;
+    }
+    .footerRight{
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .footerRightItems{
+        width: 100%;
+        max-width: none;
+    }
+}
+@media(max-width: 740px){
+    .footerRight{
+        flex-direction: column;
+        gap: 25px;
+    }
+    .footerBottom{
+        flex-direction: column;
+        gap: 15px;
+    }
+    .footerRightItems ul li span:last-of-type{
+        flex-direction: row;
+        gap: 15px;
+    }
+    .footerBottom span{
+        text-align: center;
+    }
+}

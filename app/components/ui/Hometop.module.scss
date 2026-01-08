@@ -46,3 +46,24 @@
 .green{
     color: #199800 !important;
 }
+
+@media(max-width: 900px){
+    .hometop{
+        flex-direction: column;
+        gap: 50px;
+    }
+    .hometopRight{
+        width: 100%;
+    }
+    .hometopLeft h2{
+        font-size: 48px;
+        line-height: 48px;
+        text-align: center;
+    }
+    .hometopRight p {
+        text-align: center;
+    }
+    .hometopRight button{
+        width: 100%;
+    }
+}

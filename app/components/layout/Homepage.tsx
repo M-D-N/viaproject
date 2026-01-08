@@ -23,7 +23,7 @@ export default function App() {
         {img: "/2.png", title: "Sifat va dizayn uyg'unligi", description: "Bizning mebellarimiz nafaqat chiroyli, balki uzoq muddat xizmat qiladi.", btn: "Mahsulotlarni ko'rish"},
         {img: "/3.png", title: "Maxsus takliflar va chegirmalar", description: "VIA bilan xarid qilish endi yanada foydaliroq va arzonroq.", btn: "Chegirmalarni ko'rish"}
       ]}/>
-
+      
       <div className="container">
         <Homeabout 
           title = "Bizning kompaniyamiz haqida"

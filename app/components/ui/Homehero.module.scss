@@ -63,6 +63,39 @@
     }
 }
 
+@media (max-width: 1153px) {
+    .homeheroContent{
+        width: 70%;
+    }
+    .homehero{
+        :global(.splide__arrow--prev){
+            right: 15%;
+            left: inherit;
+        }
+    }
+}
+@media (max-width: 1060px){
+    .homeheroContent{
+        width: 90%;
+    }
+}
+
+@media (max-width: 740px){
+    .homeheroContentInner h2{
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .homeheroContentInner p,
+    .homeheroContentInner span{
+        font-size: 10px;
+        line-height: 12px;
+    }
+    .homeheroContentImage{
+        width: 140px;
+        height: 104px;
+    }
+}
+
 
 
 

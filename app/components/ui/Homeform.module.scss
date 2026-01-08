@@ -114,3 +114,25 @@
         }
     }
 }
+
+@media (max-width: 1060px) {
+    .formcontent{
+        flex-direction: column;
+    }
+}
+@media (max-width: 740px) {
+    .formcontentleftcontent h3{
+        font-size: 24px;
+        line-height: 32px;
+    }
+    .formcontentleftcontent p{
+        font-size: 24px;
+        line-height: 32px;
+    }
+    .formcontentleft, .formcontentright{
+        padding: 50px 20px;
+    }
+    .formcontentright form button{
+        width: 100%;
+    }
+}

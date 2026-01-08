@@ -26,5 +26,21 @@
     border-radius: 8px;
 }
 
+@media(max-width: 730px){
+    .header{
+        nav{
+            justify-content: space-between;
+            ul{
+                display: none;
+            }
+            &>a{
+                display: none;
+            }
+        }
+    }
+    
+}
+
+
 
 

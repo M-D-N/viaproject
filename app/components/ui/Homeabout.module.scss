@@ -95,3 +95,38 @@
 .green{
     color: #199800;
 }
+
+@media(max-width: 1153px){
+    .homeaboutitemlistnumbers{
+        width: 250px;
+    }
+}
+@media(max-width: 1060px){
+    .homeaboutitem{
+        flex-direction: column;
+    }
+    .homeaboutitemlistnumbersbox,
+    .homeaboutitemlistnumbers{
+        width: 100%;
+    }
+    .homeaboutitemlist{
+        &:first-of-type,
+        &:last-of-type{
+            flex-direction: column-reverse;
+        }
+    }
+}
+@media (max-width: 740px) {
+    .homeaboutitemlistnumbers > span{
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .homeaboutitemlistnumbers > span:first-of-type{
+        font-size: 56px;
+        line-height: 64px;
+    }
+    .homeabout > p,
+    .homeabout > h3{
+        width: 100%;
+    }
+}

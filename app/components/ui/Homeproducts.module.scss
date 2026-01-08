@@ -97,3 +97,48 @@
   background-color: #24BF00 !important;
   color: #fff !important;
 }
+
+@media (max-width: 1153px) {
+    .homeproductsbottom{
+        justify-content: center;
+    }
+    .homeproductsbottomimg{
+        width: 350px;
+        height: 300px;
+    }
+    .homeproductstop{
+        flex-direction: column;
+        gap: 15px;
+        justify-content: start;
+        align-items: start;
+        position: relative;
+        padding-top: 50px;
+        overflow: scroll;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+        &>h3{
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+    }
+    .homeproductscat{
+        width: max-content;
+        overflow: scroll;
+        button{
+            width: max-content;
+        }
+    }
+    
+}
+@media (max-width: 740px) {
+    .homeproductsbottomitem{
+        width: 100%;
+    }
+    .homeproductsbottomimg{
+        width: 100%;
+    }
+
+}
+
