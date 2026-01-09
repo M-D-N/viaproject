@@ -86,13 +86,14 @@ export function Header ({ items }: HeaderProps) {
                 <a className={styles.headerContact} href={`tel:${headerContent?.contact_info.contactcontent[0].text}`}>
                     {headerContent?.contact_info.contactcontent[1].text}
                 </a>
+                
                 <div className={styles.headerMobile}>
-                    <div onClick={toggleMenu} className={styles.headerMobileIcon}>
+                    <div onClick={toggleMenu} className={`${styles.headerMobileIcon} ${isOpen ? styles.headerMobileIconActive : ""}`}>
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
-                    <div style={{ display: isOpen ? "flex" : "none" }} className={styles.headerMobileMenu}>
+                    <div style={{ left: isOpen ? "0" : "-100%" }} className={styles.headerMobileMenu}>
                         <ul>
                             {items.map((item, index) => (
                                 <li key={index}>
@@ -102,7 +103,6 @@ export function Header ({ items }: HeaderProps) {
                         </ul>
                     </div>
                 </div>
-
             </nav>
         </header>
     )
