@@ -13,6 +13,12 @@ pnpm dev
 # or
 bun dev
 ```
+```bash
+login: mardonov.mexriddin1997@gmail.com
+# or
+password: Password123.
+# or
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

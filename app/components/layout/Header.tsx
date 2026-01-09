@@ -5,6 +5,7 @@ import { buildAbsoluteUrl } from "@/lib/utils";
 import Link from "next/link";
 import styles from "./Header.module.scss";
 import Image from "next/image";
+import { useState } from "react";
 
 
 interface NavItem {
@@ -19,6 +20,10 @@ export function Header ({ items }: HeaderProps) {
     
     const { data, loading, error } = useHomepageQuery();
     const headerContent = data?.homepage;
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
 
     if(loading){
         return(
@@ -79,7 +84,25 @@ export function Header ({ items }: HeaderProps) {
                 </ul>
 
                 <a className={styles.headerContact} href={`tel:${headerContent?.contact_info.contactcontent[0].text}`}>
-                    {headerContent?.contact_info.contactcontent[1].text}</a>
+                    {headerContent?.contact_info.contactcontent[1].text}
+                </a>
+                <div className={styles.headerMobile}>
+                    <div onClick={toggleMenu} className={styles.headerMobileIcon}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div style={{ display: isOpen ? "flex" : "none" }} className={styles.headerMobileMenu}>
+                        <ul>
+                            {items.map((item, index) => (
+                                <li key={index}>
+                                    <Link href={item.link}>{item.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+
             </nav>
         </header>
     )
